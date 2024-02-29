@@ -9,6 +9,7 @@ import com.dan.page3withjepackcompose.data.local.UnsplashDatabase
 import com.dan.page3withjepackcompose.data.remote.UnsplashApi
 import com.dan.page3withjepackcompose.model.UnsplashImage
 import com.dan.page3withjepackcompose.model.UnsplashRemoteKeys
+import com.dan.page3withjepackcompose.util.Constants.ITEMS_PER_PAGE
 import javax.inject.Inject
 
 /*
@@ -54,7 +55,7 @@ class UnsplashRemoteMediator @Inject constructor(
             }
 
             //Make request to get all photos from server
-            val response = unsplashApi.getAllPhotos(page = currentPage, perPage = 10)
+            val response = unsplashApi.getAllPhotos(page = currentPage, perPage = ITEMS_PER_PAGE)
             val isEndOfPaginationReached = response.isEmpty()
 
             val prevPage = if (currentPage == 1) null else currentPage - 1
