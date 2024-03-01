@@ -10,13 +10,14 @@ import com.dan.page3withjepackcompose.data.remote.UnsplashApi
 import com.dan.page3withjepackcompose.model.UnsplashImage
 import com.dan.page3withjepackcompose.model.UnsplashRemoteKeys
 import com.dan.page3withjepackcompose.util.Constants.ITEMS_PER_PAGE
-import javax.inject.Inject
 
 /*
 RemoteMediator is to automatically fetch data from API and store the data into Room DB
+class UnsplashRemoteMediator() is instantiated by Repository that passes unsplashApi and unsplashDatabase
+
  */
 @OptIn(ExperimentalPagingApi::class)
-class UnsplashRemoteMediator @Inject constructor(
+class UnsplashRemoteMediator(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase
 ) : RemoteMediator<Int, UnsplashImage>() {
