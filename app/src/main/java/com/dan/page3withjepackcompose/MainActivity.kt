@@ -3,14 +3,10 @@ package com.dan.page3withjepackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.dan.page3withjepackcompose.navigation.SetUpNavGraph
 import com.dan.page3withjepackcompose.ui.theme.Page3WithJepackComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 /*
 Page3 with Jekpack compose
@@ -61,36 +57,19 @@ Data from layered source. It means Network source + database cache
 There is one more important thing that goes along with Remote Mediator is "Remote Keys"
 Remote keys are keys that is using to tell the back-end service which data to load next
 
+Materials:
+https://unsplash.com/documentation
+
  */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Page3WithJepackComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                val navController = rememberNavController()
+                SetUpNavGraph(navController = navController)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Page3WithJepackComposeTheme {
-        Greeting("Android")
     }
 }

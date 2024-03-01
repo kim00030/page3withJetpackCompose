@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Page3WithJepackCompose</string>
+    <string name="home">Home</string>
+    <string name="search_icon">Search Icon</string>
 </resources>
