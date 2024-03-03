@@ -1,6 +1,7 @@
 package com.dan.page3withjepackcompose.data.remote
 
 import com.dan.page3withjepackcompose.BuildConfig
+import com.dan.page3withjepackcompose.model.SearchResult
 import com.dan.page3withjepackcompose.model.UnsplashImage
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -19,11 +20,15 @@ interface UnsplashApi {
         @Query("per_page") perPage: Int
     ): List<UnsplashImage>
 
+    /*
+    https://unsplash.com/documentation#search-photos
 
+    for example: https://api.unsplash.com/search/photos?query=nature
+     */
     @Headers("Authorization: Client-ID ${BuildConfig.API_KEY}")
     @GET("/search/photos")
     suspend fun searchImages(
-        @Query("page") page: Int,
+        @Query("query") query: String,
         @Query("per_page") perPage: Int
-    ): List<UnsplashImage>
+    ): SearchResult
 }

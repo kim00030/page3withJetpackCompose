@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.dan.page3withjepackcompose.screens.home.HomeScreen
+import com.dan.page3withjepackcompose.screens.search.SearchScreen
 
 @Composable
 fun SetUpNavGraph(navController: NavHostController) {
@@ -13,7 +14,7 @@ fun SetUpNavGraph(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
         composable(route = Screen.Search.router) {
-//            SearchScreen(navController = navController)
+            SearchScreen(navController = navController)
         }
     }
 }
